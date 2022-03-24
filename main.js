@@ -6,6 +6,18 @@ function preload(){
     
 }
 
+function setup(){
+    canvas = createCanvas(380,380);
+    canvas.center();
+    video = createCapture(VIDEO);
+    video.size(380,380);
+    video.hide();
+    objectDetecter = ml5.objectDetector('cocossd',modelloaded);
+    document.getElementById("status").innerHTML = "Model is detecting objects";
+
+}
+
+
 function draw(){
     image(video,0,0,380,380);
     if (status1 != ''){
@@ -38,16 +50,6 @@ function draw(){
 }
 
 
-function setup(){
-    canvas = createCanvas(380,380);
-    canvas.center();
-    video = createCapture(VIDEO);
-    video.size(380,380);
-    video.hide();
-    objectDetecter = ml5.objectDetector('cocossd',modelloaded);
-    document.getElementById("status").innerHTML = "Model is detecting objects";
-
-}
 
 function modelloaded(){
     console.log("MODEL HAS LOADED SUCCESFULLY !!");
